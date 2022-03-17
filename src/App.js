@@ -1,10 +1,11 @@
-import {grommet, Grommet} from 'grommet'
-import imagesResource from './assets/images'
+import Header from './components/Header'
+import {StyledGlobal} from './Global.styled' 
 function App() {
   return (
-    <Grommet className="App">
-      <img src = {imagesResource.CheckIcon} alt = "Test icon"/>
-    </Grommet>
+    <> 
+      <StyledGlobal/>
+      <Header/>
+    </>
   );
 }
 
