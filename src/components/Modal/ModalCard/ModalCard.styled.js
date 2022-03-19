@@ -8,18 +8,20 @@ export const StyledModalCard = styled(motion.div)`
   padding: 2em;
   border-radius: 10px;
   border: 1px solid ${({ clr }) => clr || "#eaeaea"};
-  flex-wrap: wrap;
 
   .checkbox-inside {
-    padding: 0.25em;
+    position: absolute;
+    width: 8px;
+    height: 8px;
     background-color: var(--clr_mcyan);
-    border-radius: 50px;
+    border-radius: 50%;
   }
 
   .checkbox {
     padding: 0.5em;
-    border-radius: 50px;
-    min-height: 5px;
+    position: relative;
+    border-radius: 50%;
+    height: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,12 +71,52 @@ export const StyledModalCard = styled(motion.div)`
     text-align: right;
     font-size: clamp(0.6rem, 1vw, 0.8rem);
   }
+
+  @media (max-width: 450px) {
+    position: relative;
+    padding: 6em 1.5em;
+    & > * {
+      margin-top: -4.8em;
+    }
+
+    .card-content {
+      margin-top: -4.4em;
+    }
+
+    .title-container {
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.25em;
+      align-items: flex-start;
+    }
+
+    .title-container .limit {
+      margin-left: 0;
+    }
+
+    .quantities {
+      position: absolute;
+      left: 0;
+      display: block;
+      padding: 0 2.5em;
+      bottom: 2em;
+    }
+
+    .card-description {
+      position: absolute;
+      left: 0;
+      display: block;
+      padding: 0 2.5em;
+      bottom: 5em;
+      line-height: 1.5;
+    }
+  }
 `;
 
 export const StyledPledge = styled(motion.section)`
-    width: 100%;
-    border-top: 1px solid #eaeaea;
-    padding: 1.5em;
+  width: 100%;
+  border-top: 1px solid #eaeaea;
+  padding: 1.5em;
   form {
     display: flex;
     justify-content: space-between;
@@ -93,7 +135,7 @@ export const StyledPledge = styled(motion.section)`
   }
 
   .form-control > * {
-    padding: 1em;
+    padding: clamp(0.75em,1.2vw,1em);
     border-radius: 25px;
     width: 100%;
   }
@@ -101,15 +143,17 @@ export const StyledPledge = styled(motion.section)`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    gap: 0.2em;
     border: 1px solid #eaeaea;
   }
 
   .input-container input::placeholder,
   .input-container input {
-    color: var(--clr_b);
+    color: var(--clr_mcyan);
     font-size: clamp(0.6rem, 1vw, 0.8rem);
     width: 60%;
     border: none;
+    outline: none;
   }
 
   .currency {
@@ -124,5 +168,23 @@ export const StyledPledge = styled(motion.section)`
     color: white;
   }
 
-  
+  @media (max-width: 450px) {
+    form {
+      flex-direction: column;
+      align-items: center;
+      gap:1em;
+      text-align: center;
+      justify-content: center;
+    }
+    .form-control {
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .form-control > * {
+    padding: 0.75em;
+    border-radius: 25px;
+    width: 100%;
+  }
+  }
 `;

@@ -53,5 +53,6 @@ export const StyledModal = styled(motion.section)`
       display: flex;
       flex-direction: column;
       gap:1em;
+      width:100%;
   }
 `;

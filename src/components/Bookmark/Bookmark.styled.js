@@ -87,7 +87,7 @@ export const StyledBookmark = styled(motion.section)`
     width: max(90%, 300px);
     align-items: center;
     justify-content: center;
-
+    margin-top: -3em;
     .card-info {
       width: 100%;
       justify-content:center;   
