@@ -6,7 +6,7 @@ export const StyledBookmark = styled(motion.section)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: max(45%, 350px);
+  width: max(50%, 350px);
   background-color: #ffffff;
   margin-top: -5em;
   border-radius: 5px;
@@ -46,12 +46,13 @@ export const StyledBookmark = styled(motion.section)`
   }
 
   .bookmark-container .back {
-    background-color: var(--clr_mcyan);
     padding: 0.75em 3em;
     font-size: clamp(0.6rem, 1vw, 0.8rem);
     border-radius: 25px;
     color: #ffffff;
     border: 1px solid var(--clr_mcyan);
+    background-color: var(--clr_mcyan);
+
   }
 
   .button-container {
