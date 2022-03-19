@@ -7,7 +7,7 @@ export const StyledModal = styled(motion.section)`
   width:max(50%,350px);
   border-radius: 5px;
   align-items: center;
-  gap:1.5em;
+  gap:2em;
   margin-top:2em;
   background-color: #ffffff;
   

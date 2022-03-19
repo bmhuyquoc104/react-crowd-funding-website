@@ -7,13 +7,22 @@ export const StyledModalCard = styled(motion.div)`
   max-width: 100%;
   padding: 2em;
   border-radius: 10px;
-  border: 1px solid #eaeaea;
+  border: 1px solid ${({ clr }) => clr || "#eaeaea"};
   flex-wrap: wrap;
+
+  .checkbox-inside {
+    padding: 0.25em;
+    background-color: var(--clr_mcyan);
+    border-radius: 50px;
+  }
 
   .checkbox {
     padding: 0.5em;
     border-radius: 50px;
-    height: 5px;
+    min-height: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid #eaeaea;
   }
 
@@ -60,11 +69,12 @@ export const StyledModalCard = styled(motion.div)`
     text-align: right;
     font-size: clamp(0.6rem, 1vw, 0.8rem);
   }
+`;
 
-  .pledge-container {
+export const StyledPledge = styled(motion.section)`
     width: 100%;
-  }
-
+    border-top: 1px solid #eaeaea;
+    padding: 1.5em;
   form {
     display: flex;
     justify-content: space-between;
@@ -72,6 +82,8 @@ export const StyledModalCard = styled(motion.div)`
   }
   label {
     width: 100%;
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
+    color: var(--clr_g);
   }
   .form-control {
     display: flex;
@@ -96,7 +108,7 @@ export const StyledModalCard = styled(motion.div)`
   .input-container input {
     color: var(--clr_b);
     font-size: clamp(0.6rem, 1vw, 0.8rem);
-    width: 50%;
+    width: 60%;
     border: none;
   }
 
@@ -109,5 +121,8 @@ export const StyledModalCard = styled(motion.div)`
     border: 1px solid var(--clr_mcyan);
     background-color: var(--clr_mcyan);
     font-size: clamp(0.6rem, 1vw, 0.8rem);
+    color: white;
   }
+
+  
 `;
