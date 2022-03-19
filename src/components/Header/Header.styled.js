@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import imagesResource from "../assets/images";
+import imagesResource from "../../assets/images";
 import {motion} from 'framer-motion'
 export const StyledHeader = styled(motion.header)`
   min-height: 35vh;
@@ -85,4 +85,6 @@ export const StyledActiveHeader = styled(motion.header)`
     background-color: white;
     padding: 1.75em 1em;
   }
+
+  
 `;

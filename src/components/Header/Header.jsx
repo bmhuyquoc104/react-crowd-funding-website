@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { StyledHeader, StyledActiveHeader } from "./Header.styled";
-import imagesResource from "../assets/images";
-import { AnimatePresence, motion } from "framer-motion";
+import imagesResource from "../../assets/images";
+import { AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isShowBar, setShowBar] = useState(false);
 
   return (
     <>
-      <AnimatePresence enterBeforeExit>
+      <AnimatePresence initial={false} enterBeforeExit>
         {isShowBar ? (
           <StyledActiveHeader
             key="1"
