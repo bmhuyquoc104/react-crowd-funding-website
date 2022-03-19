@@ -21,7 +21,6 @@ export const StyledGlobal = createGlobalStyle`
     body{
         min-height:100vh;
         font-family:"Commissioner";
-        background-color:red;
     }
 
 

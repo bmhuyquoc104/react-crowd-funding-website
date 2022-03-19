@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import imagesResource from "../assets/images";
-export const StyledHeader = styled.header`
+import {motion} from 'framer-motion'
+export const StyledHeader = styled(motion.header)`
   min-height: 35vh;
   padding: 0.01em 9em;
   background-image: url(${imagesResource.HeroDesktop});
@@ -52,7 +53,7 @@ export const StyledHeader = styled.header`
   }
 `;
 
-export const StyledActiveHeader = styled.header`
+export const StyledActiveHeader = styled(motion.header)`
   display: flex;
   flex-direction: column;
   background-image: url(${imagesResource.HeroMobile});
