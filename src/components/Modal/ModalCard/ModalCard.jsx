@@ -7,6 +7,8 @@ export const ModalCard = ({ title, description, quantities, limit }) => {
   let buttonRef = useRef(null);
   console.log(title);
 
+
+
   return (
     <>
       {isToggle && title !== "Pledge with no reward" ? (

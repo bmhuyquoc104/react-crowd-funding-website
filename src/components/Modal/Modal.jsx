@@ -2,7 +2,36 @@ import React from "react";
 import { StyledModal } from "./Modal.styled";
 import imagesResource from "../../assets/images";
 import { ModalCard } from "./ModalCard/ModalCard";
+import { motion } from "framer-motion";
 const Modal = () => {
+  const cardContainerVariant = {
+    hidden: {
+      opacity: 0,
+      x: "-100vh",
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damp: 10,
+        duration: 10,
+        when: "beforeChildren",
+        staggerChildren: 0.5
+      },
+    },
+  };
+
+  const cardItemVariant = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
+  };
+
   const cardContent = [
     {
       id: 1,
@@ -49,17 +78,29 @@ const Modal = () => {
           the world?
         </p>
       </div>
-      <div className="card-list">
+      <motion.div
+        whileInView="visible"
+        variants={cardContainerVariant}
+        animate="visible"
+        initial="hidden"
+        className="card-list"
+      >
         {cardContent.map((card) => (
-          <ModalCard
-            key={card.id}
-            title={card.title}
-            description={card.description}
-            limit={card.limit}
-            quantities={card.quantities}
-          ></ModalCard>
-        ))}
-      </div>
+          
+            <motion.div variants = {cardItemVariant}>
+              <ModalCard
+                as={motion.div}
+                variants={cardItemVariant}
+                key={card.id}
+                title={card.title}
+                description={card.description}
+                limit={card.limit}
+                quantities={card.quantities}
+              ></ModalCard>
+            </motion.div>
+          )
+        )}
+      </motion.div>
     </StyledModal>
   );
 };
