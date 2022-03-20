@@ -55,4 +55,9 @@ export const StyledModal = styled(motion.section)`
       gap:1em;
       width:100%;
   }
+
+  @media (max-width: 450px){
+    width:max(100%,300px);
+
+  }
 `;
