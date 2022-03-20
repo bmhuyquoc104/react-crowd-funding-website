@@ -20,7 +20,7 @@ export const StyledGlobal = createGlobalStyle`
     }
     
     body{
-        min-height:100vh;
+        min-height:230vh;
         font-family:"Commissioner";
         background-color:#fafafa;
     }
