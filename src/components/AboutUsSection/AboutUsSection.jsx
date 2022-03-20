@@ -1,6 +1,6 @@
 import React from "react";
 import {StyledAboutSection} from "./AboutUs.styled";
-import Modal from '../Modal/Modal'
+import {CardDefault} from '../Modal/Modal'
 const AboutUsSection = () => {
   return (
     <StyledAboutSection>
@@ -17,7 +17,7 @@ const AboutUsSection = () => {
         desk space below your computer to allow notepads, pens, and USB sticks
         to be stored under the stand.
       </p>
-      <Modal/>
+      <CardDefault/>
     </StyledAboutSection>
   );
 };

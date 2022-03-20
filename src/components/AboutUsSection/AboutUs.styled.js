@@ -16,6 +16,8 @@ export const StyledAboutSection = styled(motion.section)`
   
   &>:nth-child(4){
     padding:0;
+    margin-top:0;
+    width: 100%;
   }
   .project-title {
     color: var(--clr_sb);

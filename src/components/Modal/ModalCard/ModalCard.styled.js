@@ -28,9 +28,9 @@ export const StyledModalCard = styled(motion.div)`
     border: 1px solid #eaeaea;
   }
 
-  .checkbox.hover{
+  .checkbox.hover {
     border: 1px solid var(--clr_mcyan);
-    background-color:white;
+    background-color: white;
   }
 
   .title-container {
@@ -140,7 +140,7 @@ export const StyledPledge = styled(motion.section)`
   }
 
   .form-control > * {
-    padding: clamp(0.75em,1.2vw,1em);
+    padding: clamp(0.75em, 1.2vw, 1em);
     border-radius: 25px;
     width: 100%;
   }
@@ -177,7 +177,7 @@ export const StyledPledge = styled(motion.section)`
     form {
       flex-direction: column;
       align-items: center;
-      gap:1em;
+      gap: 1em;
       text-align: center;
       justify-content: center;
     }
@@ -187,9 +187,90 @@ export const StyledPledge = styled(motion.section)`
     }
 
     .form-control > * {
-    padding: 0.75em;
-    border-radius: 25px;
-    width: 100%;
+      padding: 0.75em;
+      border-radius: 25px;
+      width: 100%;
+    }
   }
+`;
+
+export const StyledDefaultCard = styled(motion.section)`
+  opacity: ${({ opacity }) => opacity || "1"};
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  border-radius: 10px;
+  border: 1px solid ${({ clr }) => clr || "#eaeaea"};
+  gap: 1em;
+
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: clamp(1rem, 1vw, 1.2rem);
+  }
+
+  .card-bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-description {
+    color: var(--clr_g);
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
+    line-height: 2;
+  }
+
+  h2 {
+    font-size: clamp(0.6rem, 0.8vw, 0.8rem);
+  }
+
+  .title-container .limit {
+    color: var(--clr_mcyan);
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
+    font-weight: var(--fw_s);
+  }
+
+  .title-container .card-title {
+    color: var(--clr_b);
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
+  }
+
+  button {
+    text-align: center;
+    background-color: ${({ bg }) => bg || "hsl(176, 50%, 47%)"};
+    color: white;
+    padding: 0.9em 2em;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+    font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+    border: 1px solid ${({ bg }) => bg || "hsl(176, 50%, 47%)"};
+  }
+
+  span {
+    color: var(--clr_g);
+    margin-left: 0.2em;
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
+  }
+
+  @media (max-width: 768px) {
+    .card-bottom {
+      display: flex;
+      flex-direction: column;
+      justify-content: initial;
+      gap: 1em;
+    }
+
+    button{
+      width:70%;
+    }
+
+    .title-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: initial;
+      font-size: clamp(1rem, 1vw, 1.2rem);
+      gap: 0.4em;
+
+    }
   }
 `;

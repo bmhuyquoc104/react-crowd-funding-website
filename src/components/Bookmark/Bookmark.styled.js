@@ -95,7 +95,7 @@ export const StyledBookmark = styled(motion.section)`
     }
 
     .card-info p{
-        font-size: clamp(1rem, 1vw, 1.2rem);
+        font-size: clamp(0.8rem, 2vw, 1.4rem);
         width: max(80%);
     }
 
@@ -113,7 +113,7 @@ export const StyledBookmark = styled(motion.section)`
     .bookmark-container .back {
       width: 75%;
       padding:  0.75em;
-      font-size: clamp(1.2rem, 1vw, 1.4rem);
+      font-size: clamp(0.8rem, 2vw, 1.4rem);
 
     }
 
