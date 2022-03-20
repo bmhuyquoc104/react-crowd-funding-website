@@ -5,6 +5,7 @@ export const FlexContainer = styled.div`
   padding: ${({v}) => v || "0"} ${({h}) => h || "2em"};
   justify-content: ${({ jc }) => jc || "center"};
   align-items: ${({ ai }) => ai || "center"};
+  gap: 2em;
   flex-direction: ${({ fd }) => fd || "row"};
   @media (max-width: 450px) {
     & > * {

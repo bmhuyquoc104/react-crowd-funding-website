@@ -4,6 +4,8 @@ import Bookmark from './components/Bookmark/Bookmark'
 import {FlexContainer} from'./components/Flex/Flex'
 import Modal from './components/Modal/Modal'
 import ModalSubmission from './components/Modal/ModalSubmission/ModalSubmission'
+import PledgeProgressBar from './components/PledgeProgressBar/PledgeProgressBar'
+
 function App() {
   return (
     <> 
@@ -11,8 +13,8 @@ function App() {
       <Header/>
       <FlexContainer fd ="column" >
         <Bookmark/>
+        <PledgeProgressBar/>
         <Modal/>
-        <ModalSubmission/>
       </FlexContainer>
     </>
   );
