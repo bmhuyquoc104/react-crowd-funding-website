@@ -28,6 +28,11 @@ export const StyledModalCard = styled(motion.div)`
     border: 1px solid #eaeaea;
   }
 
+  .checkbox.hover{
+    border: 1px solid var(--clr_mcyan);
+    background-color:white;
+  }
+
   .title-container {
     display: flex;
     justify-content: space-between;
@@ -168,7 +173,7 @@ export const StyledPledge = styled(motion.section)`
     color: white;
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: 768px) {
     form {
       flex-direction: column;
       align-items: center;

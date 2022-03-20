@@ -50,7 +50,7 @@ const Modal = () => {
         </p>
       </div>
       <div className="card-list">
-        {cardContent.map((card, key) => (
+        {cardContent.map((card) => (
           <ModalCard
             key={card.id}
             title={card.title}
