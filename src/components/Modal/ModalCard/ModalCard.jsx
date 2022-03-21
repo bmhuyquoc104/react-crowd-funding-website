@@ -71,12 +71,11 @@ export const DefaultCard = ({
   );
 };
 
-export const ModalCard = ({ title, description, quantities, limit,pledgeLimit,opac}) => {
-  console.log(opac);
+export const ModalCard = ({ title, description, quantities, limit,pledgeLimit}) => {
   let [backerLeft,setBackerLeft] = useState(quantities);
   const {pledge,setPledge} = useContext(PledgeContext);
   let { dispatch } = useContext(ModalContext);
-  let [input,setInput] = useState(pledge.totalAmount);
+  let [input,setInput] = useState(0);
   let [isToggle, setToggle] = useState(false);
   let buttonRef = useRef(null);
   const toggleModal = (e) => {

@@ -68,7 +68,6 @@ const cardContent = [
     limit: "Pledge $200 or more",
     quantities: 0,
     pledgeLimit: 200,
-    opac: 0.2,
   },
 ];
 
@@ -103,7 +102,6 @@ export const CardDefault = () => (
               variants={cardItemVariant}
               title={card.title}
               description={card.description}
-              opac= {card.opac}
               limit={card.limit}
               quantities={card.quantities}
               buttonText="Out of stock"
@@ -139,15 +137,16 @@ const Modal = ({ dp,bg }) => {
       >
         {cardContent.map((card) => 
           card.quantities === 0 ? (
-            <li className="cho-quan" variants={cardItemVariant} key={card.id}>
+            <div className="cho-quan" variants={cardItemVariant} key={card.id}>
               <ModalCard
                 title={card.title}
                 description={card.description}
                 limit={card.limit}
                 pledgeLimit={card.pledgeLimit}
                 quantities={card.quantities}
+                style = {{opacity:0.3}}
               ></ModalCard>
-            </li>
+            </div>
           ) : (
             <div variants={cardItemVariant} key={card.id}>
               <ModalCard

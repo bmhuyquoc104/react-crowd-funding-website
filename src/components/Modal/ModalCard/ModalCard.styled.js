@@ -7,8 +7,6 @@ export const StyledModalCard = styled(motion.div)`
   padding: 2em;
   border-radius: 10px;
   border: 1px solid ${({ clr }) => clr || "#eaeaea"};
-  opacity: ${({opac}) => opac || "1"};
-
   .checkbox-inside {
     position: absolute;
     width: 8px;
