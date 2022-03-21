@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 export const StyledModalCard = styled(motion.div)`
   display: flex;
   gap: 1em;
-  max-width: 100%;
   padding: 2em;
   border-radius: 10px;
   border: 1px solid ${({ clr }) => clr || "#eaeaea"};
@@ -195,8 +194,8 @@ export const StyledPledge = styled(motion.section)`
 `;
 
 export const StyledDefaultCard = styled(motion.section)`
-  opacity: ${({ opacity }) => opacity || "1"};
   display: flex;
+  width:100%;
   flex-direction: column;
   padding: 2em;
   border-radius: 10px;

@@ -47,7 +47,7 @@ export const StyledHeader = styled(motion.header)`
 
   @media (max-width: 450px) {
     background-image: url(${imagesResource.HeroMobile});
-    min-height: 50vh;
+    min-height: 20vh;
     width: max(100%,350px);
     background-size: cover;
   }

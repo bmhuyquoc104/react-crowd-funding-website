@@ -6,7 +6,7 @@ export const StyledBookmark = styled(motion.section)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: max(50%, 350px);
+  width: max(50%, 300px);
   background-color: #ffffff;
   margin-top: -5em;
   border-radius: 5px;

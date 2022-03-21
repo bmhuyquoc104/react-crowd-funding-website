@@ -11,7 +11,7 @@ const ProgressBar = ({ done }) => {
   );
 };
 
-const PledgeProgressBar = () => {
+const PledgeProgressBar = ({totalAmount,totalBack,totalLeft}) => {
   return (
     <StyledPledgeProgressBar>
       <div className="progress-container">

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import {
   StyledModalCard,
   StyledPledge,
@@ -6,15 +6,21 @@ import {
 } from "./ModalCard.styled";
 import { FlexContainer } from "../../Flex/Flex";
 import { motion } from "framer-motion";
+import { ModalContext } from "../../../hooks/useContext";
 
-export const DefaultCard = ({ title, description, quantities, limit,opacity,buttonText,bg }) => {
-  console.log(title);
-  console.log(opacity);
-  console.log(bg);
+export const DefaultCard = ({
+  title,
+  description,
+  quantities,
+  limit,
+  buttonText,
+  bg,
+}) => {
+  let { setDisplayFlex, dispatch } = useContext(ModalContext);
   return (
     <>
       {title !== "Pledge with no reward" ? (
-        <StyledDefaultCard opacity = {opacity}>
+        <StyledDefaultCard>
           <div className="title-container">
             <motion.h2 className="card-title">{title}</motion.h2>
             <div className="limit">{limit !== "" && <h2> {limit}</h2>}</div>
@@ -29,28 +35,50 @@ export const DefaultCard = ({ title, description, quantities, limit,opacity,butt
                 </h3>
               )}
             </div>
-            <motion.button
-              whileHover={{
-                backgroundColor: "hsl(176, 72%, 28%)",
-                cursor: "pointer",
-              }}
-              className="select"
-              style = {{backgroundColor: `${bg}`,border: `1px solid ${bg}`}}
-            >
-              {buttonText}
-            </motion.button>
+            {buttonText !== "Out of stock" ? (
+              <motion.button
+                onClick={() => {
+                  setDisplayFlex("flex");
+                  dispatch({ type: "DISPLAYMODAL" });
+                }}
+                whileHover={{
+                  backgroundColor: "hsl(176, 72%, 28%)",
+                  cursor: "pointer",
+                }}
+                className="select"
+                style={{ backgroundColor: `${bg}`, border: `1px solid ${bg}` }}
+              >
+                {buttonText}
+              </motion.button>
+            ) : (
+              <motion.button
+                onClick={() => {
+                  setDisplayFlex("flex");
+                  dispatch({ type: "DISPLAYMODAL" });
+                }}
+                className="select"
+                style={{ backgroundColor: `${bg}`, border: `1px solid ${bg}` }}
+              >
+                {buttonText}
+              </motion.button>
+            )}
           </div>
         </StyledDefaultCard>
-      ):(
-        <StyledDefaultCard style = {{display:"none"}}/>
+      ) : (
+        <StyledDefaultCard style={{ display: "none" }} />
       )}
     </>
   );
 };
 
 export const ModalCard = ({ title, description, quantities, limit }) => {
+  let { dispatch } = useContext(ModalContext);
   let [isToggle, setToggle] = useState(false);
   let buttonRef = useRef(null);
+  const toggleModal = (e) => {
+    dispatch({ type: "DISPLAYMODALSUBMISSION" });
+    e.preventDefault();
+  };
   console.log(title);
   return (
     <>
@@ -100,7 +128,7 @@ export const ModalCard = ({ title, description, quantities, limit }) => {
                   </h3>
                   <input type="text" name="pledge-value" min="25"></input>
                 </div>
-                <button className="submit" type="submit">
+                <button onClick={toggleModal} className="submit" type="submit">
                   Continue
                 </button>
               </div>

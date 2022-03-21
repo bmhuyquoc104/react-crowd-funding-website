@@ -1,8 +1,9 @@
-import React from "react";
+import React , {useContext,useState} from "react";
 import { StyledModal } from "./Modal.styled";
 import imagesResource from "../../assets/images";
 import { ModalCard, DefaultCard } from "./ModalCard/ModalCard";
 import { motion } from "framer-motion";
+import {ModalContext} from '../../hooks/useContext'
 
 const cardContainerVariant = {
   hidden: {
@@ -111,12 +112,13 @@ export const CardDefault = () => (
   </StyledModal>
 );
 
-const Modal = () => {
+const Modal = ({dp}) => {
+  let {setDisplayFlex} = useContext(ModalContext)
   return (
-    <StyledModal>
+    <StyledModal dp = {dp}>
       <div className="modal-header">
         <h2>Back this project</h2>
-        <div className="image">
+        <div className="image" onClick={() => setDisplayFlex("none")}>
           <img src={imagesResource.CloseModalIcon} alt="An close modal icon" />
         </div>
         <p>

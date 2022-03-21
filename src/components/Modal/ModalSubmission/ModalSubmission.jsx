@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import imagesResource from "../../../assets/images";
+import { ModalContext } from "../../../hooks/useContext";
+
 const StyledModalSubmission = styled(motion.div)`
-  display: flex;
+  display: ${({dp}) => dp};
   flex-direction:column;
   justify-content: center;
   align-items: center;
@@ -34,13 +36,13 @@ const StyledModalSubmission = styled(motion.div)`
       font-size:clamp(0.8rem,1.3vw,1rem);  
       background-color:var(--clr_mcyan);
       border-radius:25px;
-
   }
 `;
 
-const ModalSubmission = () => {
+const ModalSubmission = ({dp}) => {
+  let {dispatch} = useContext(ModalContext);
   return (
-    <StyledModalSubmission>
+    <StyledModalSubmission dp = {dp}>
       <div className="image">
         <img src={imagesResource.CheckIcon} alt="A circle tick icon " />
       </div>
@@ -50,7 +52,7 @@ const ModalSubmission = () => {
         Monitor Riser worldwide. You will get an email once our campaign is
         completed.
       </p>
-      <motion.button whileHover = {{cursor: 'pointer',backgroundColor: 'hsl(176, 72%, 28%)'}}>Got it!</motion.button>
+      <motion.button onClick = {() => dispatch({type:"CLOSEMODALSUBMISSION"})} whileHover = {{cursor: 'pointer',backgroundColor: 'hsl(176, 72%, 28%)'}}>Got it!</motion.button>
     </StyledModalSubmission>
   );
 };

@@ -4,20 +4,29 @@ import { motion } from "framer-motion";
 export const StyledAboutSection = styled(motion.section)`
   display: flex;
   flex-direction: column;
+  position: relative;
   gap:1em;
   width:max(50%,300px);
   background-color:#ffffff;
   padding:2em;
+
   border-radius:15px;
   
   &>*{
       width: 100%;
   }
   
+  & .test{
+    background-color:red;
+  }
+
+ 
+
   &>:nth-child(4){
     padding:0;
-    margin-top:0;
     width: 100%;
+    position:relative;
+    top: 0;
   }
   .project-title {
     color: var(--clr_sb);

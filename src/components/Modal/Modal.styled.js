@@ -1,16 +1,15 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 export const StyledModal = styled(motion.section)`
-  display: flex;
+  display: ${({dp}) => dp};
   flex-direction: column;
   padding: 2em;
-  width:max(50%,350px);
+  width: max(50%,300px);
   border-radius: 5px;
   align-items: center;
   gap:2em;
-  margin-top:2em;
   background-color: #ffffff;
-  
+
 
   .modal-header {
       display: flex;
@@ -36,6 +35,7 @@ export const StyledModal = styled(motion.section)`
   }
 
   .modal-header .image{
+      cursor: pointer;
       order:1;
       width:100%;
       position:relative;
