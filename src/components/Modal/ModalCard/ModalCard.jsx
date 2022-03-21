@@ -6,7 +6,7 @@ import {
 } from "./ModalCard.styled";
 import { FlexContainer } from "../../Flex/Flex";
 import { motion } from "framer-motion";
-import { ModalContext } from "../../../hooks/useContext";
+import { ModalContext,PledgeContext } from "../../../hooks/useContext";
 
 export const DefaultCard = ({
   title,
@@ -72,11 +72,18 @@ export const DefaultCard = ({
 };
 
 export const ModalCard = ({ title, description, quantities, limit }) => {
+  let [backerLeft,setBackerLeft] = useState(quantities);
+  const {pledge,setPledge} = useContext(PledgeContext);
   let { dispatch } = useContext(ModalContext);
+  let [input,setInput] = useState(pledge.totalAmount);
   let [isToggle, setToggle] = useState(false);
   let buttonRef = useRef(null);
   const toggleModal = (e) => {
     dispatch({ type: "DISPLAYMODALSUBMISSION" });
+    setBackerLeft(backerLeft-1);
+    setPledge({
+      totalAmount:pledge.totalAmount+input,totalBackers:pledge.totalBackers+1,totalDaysLeft:pledge.totalDaysLeft
+    });
     e.preventDefault();
   };
   console.log(title);
@@ -110,7 +117,7 @@ export const ModalCard = ({ title, description, quantities, limit }) => {
                   {quantities !== "" && (
                     <h3>
                       {" "}
-                      {quantities} <span>left</span>
+                      {backerLeft} <span>left</span>
                     </h3>
                   )}
                 </div>
@@ -126,7 +133,7 @@ export const ModalCard = ({ title, description, quantities, limit }) => {
                   <h3 className="currency">
                     $<strong style={{ color: "grey" }}>25</strong>
                   </h3>
-                  <input type="text" name="pledge-value" min="25"></input>
+                  <input type="text" name="pledge-value" min="25" onChange={(e) => setInput(parseInt(e.target.value))}></input>
                 </div>
                 <button onClick={toggleModal} className="submit" type="submit">
                   Continue

@@ -90,6 +90,6 @@ export const StyledProgressBar = styled(motion.div)`
     bottom: 0;
     color: transparent;
     background-color: var(--clr_mcyan);
-    width: ${({ done }) => done || `${defaultWidth}%`};
+    width: ${({ done }) => done };
   }
 `;

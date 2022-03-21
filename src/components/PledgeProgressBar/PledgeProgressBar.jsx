@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useContext} from "react";
 import { StyledPledgeProgressBar, StyledProgressBar } from "./PledgeProgressBar.styled";
+import { PledgeContext } from "../../hooks/useContext";
 
 const ProgressBar = ({ done }) => {
   return (
@@ -11,24 +12,26 @@ const ProgressBar = ({ done }) => {
   );
 };
 
-const PledgeProgressBar = ({totalAmount,totalBack,totalLeft}) => {
+const PledgeProgressBar = () => {
+  const {pledge} = useContext(PledgeContext);
+  console.log(pledge.totalDaysLeft);
   return (
     <StyledPledgeProgressBar>
       <div className="progress-container">
         <div className="content-pledgeAmount">
-          <h2>$89,914</h2>
+          <h2>${pledge.totalAmount}</h2>
           <h3>of $100,000 backed</h3>
         </div>
         <div className="content-backers">
-          <h2>5,007</h2>
+          <h2>{pledge.totalBackers}</h2>
           <h3>total backers</h3>
         </div>
         <div className="days-left">
-          <h2>56</h2>
+          <h2>{pledge.totalDaysLeft}</h2>
           <h3>days left</h3>
         </div>
       </div>
-      <ProgressBar/>
+      <ProgressBar done = {(pledge.totalAmount/100000)*100}/>
     </StyledPledgeProgressBar >
   );
 };

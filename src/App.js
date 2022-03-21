@@ -11,21 +11,22 @@ import ModalSubmission from "./components/Modal/ModalSubmission/ModalSubmission"
 
 function App() {
   // AbsouteFlexContainer state
-  const defaultAmount = 89914/100000;
-  const defaultBacker = 5007
-
+  const defaultAmount = 89914;
+  const defaultBackers = 5007;
+  const defaultDaysLeft = 56;
   const [displayFlex, setDisplayFlex] = useState("none");
 
-  const pledgeInitialState = {
-    totalAmount: {},totalBackers: {},totalDaysLeft: {}
-  };
+  const [pledge, setPledge] = useState({
+    totalAmount: 89914,
+    totalBackers: 5007,
+    totalDaysLeft: 56,
+  });
 
-
+  console.log(pledge.totalAmount);
 
   // Reducer to control the pledgeProgressBar
-  const pledgeReducer = useReducer(pledgeInitialState,pledgeReducer);
 
-  // Assign the initial state for reducer 
+  // Assign the initial state for reducer
   const initialState = {
     display: "none",
     displayModalSubmission: "none",
@@ -64,25 +65,31 @@ function App() {
 
   // Reducer state for control 2 modals
   const [state, dispatch] = useReducer(reducer, initialState);
-  
+
   return (
     <>
       <ModalContext.Provider
         value={{
-          displayFlex,setDisplayFlex,state,dispatch
+          displayFlex,
+          setDisplayFlex,
+          state,
+          dispatch,
         }}
       >
-        <StyledGlobal />
-        <Header />
-        <FlexContainer fd="column">
-          <Bookmark />
-          <PledgeProgressBar />
-          <AboutUsSection />
-        </FlexContainer>
-        <AbsoluteFlexContainer dp={displayFlex}>
-          <Modal dp = {state.display}/>
-          <ModalSubmission dp = {state.displayModalSubmission} />
-        </AbsoluteFlexContainer>
+        <PledgeContext.Provider value = {{pledge,
+          setPledge}}>
+          <StyledGlobal />
+          <Header />
+          <FlexContainer fd="column">
+            <Bookmark />
+            <PledgeProgressBar />
+            <AboutUsSection />
+          </FlexContainer>
+          <AbsoluteFlexContainer dp={displayFlex}>
+            <Modal dp={state.display} />
+            <ModalSubmission dp={state.displayModalSubmission} />
+          </AbsoluteFlexContainer>
+        </PledgeContext.Provider>
       </ModalContext.Provider>
     </>
   );
