@@ -31,7 +31,13 @@ const PledgeProgressBar = () => {
           <h3>days left</h3>
         </div>
       </div>
+      {(pledge.totalAmount/100000)*100 <= 100 ? (
       <ProgressBar done = {(pledge.totalAmount/100000)*100}/>
+
+      ):(
+        <ProgressBar done = "100"/>
+
+      )}
     </StyledPledgeProgressBar >
   );
 };

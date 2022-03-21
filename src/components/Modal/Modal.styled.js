@@ -56,7 +56,13 @@ export const StyledModal = styled(motion.section)`
       width:100%;
   }
 
-  
+  .outStock{
+      opacity:0.4;
+      pointer-events: none;
+  }
+  .outStock button{
+    pointer-events: none;
+  }
   @media (max-width: 450px){
     width:max(100%,300px);
 

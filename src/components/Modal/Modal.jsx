@@ -96,7 +96,7 @@ export const CardDefault = () => (
             ></DefaultCard>
           </motion.div>
         ) : (
-          <motion.div key={card.id} variants={cardItemVariant}>
+          <motion.div className = "outStock" key={card.id} variants={cardItemVariant}>
             <DefaultCard
               as={motion.div}
               variants={cardItemVariant}
@@ -137,14 +137,13 @@ const Modal = ({ dp,bg }) => {
       >
         {cardContent.map((card) => 
           card.quantities === 0 ? (
-            <div className="cho-quan" variants={cardItemVariant} key={card.id}>
+            <div className ="outStock" variants={cardItemVariant} key={card.id}>
               <ModalCard
                 title={card.title}
                 description={card.description}
                 limit={card.limit}
                 pledgeLimit={card.pledgeLimit}
                 quantities={card.quantities}
-                style = {{opacity:0.3}}
               ></ModalCard>
             </div>
           ) : (

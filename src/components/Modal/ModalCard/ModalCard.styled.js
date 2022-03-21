@@ -207,6 +207,10 @@ export const StyledDefaultCard = styled(motion.section)`
     font-size: clamp(1rem, 1vw, 1.2rem);
   }
 
+  .outStock{
+    pointer-events: none;
+  }
+
   .card-bottom {
     display: flex;
     justify-content: space-between;
