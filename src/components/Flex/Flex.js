@@ -13,3 +13,15 @@ export const FlexContainer = styled.div`
     }
   }
 `;
+
+export const AbsoluteFlexContainer = styled.div`
+  display: ${({dp}) => dp};
+  justify-content:center;
+  align-items:center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height:100vh;
+  background-color:rgba(211,211,211,0.6);
+  width: 100%;
+`
