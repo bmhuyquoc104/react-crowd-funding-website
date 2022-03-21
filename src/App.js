@@ -86,7 +86,7 @@ function App() {
             <AboutUsSection />
           </FlexContainer>
           <AbsoluteFlexContainer dp={displayFlex}>
-            <Modal dp={state.display} />
+            <Modal dp={state.display}/>
             <ModalSubmission dp={state.displayModalSubmission} />
           </AbsoluteFlexContainer>
         </PledgeContext.Provider>

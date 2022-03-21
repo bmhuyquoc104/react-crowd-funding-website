@@ -1,9 +1,9 @@
-import React , {useContext,useState} from "react";
+import React, { useContext, useState } from "react";
 import { StyledModal } from "./Modal.styled";
 import imagesResource from "../../assets/images";
 import { ModalCard, DefaultCard } from "./ModalCard/ModalCard";
 import { motion } from "framer-motion";
-import {ModalContext} from '../../hooks/useContext'
+import { ModalContext } from "../../hooks/useContext";
 
 const cardContainerVariant = {
   hidden: {
@@ -49,6 +49,7 @@ const cardContent = [
       "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.",
     limit: "Pledge $25 or more",
     quantities: 101,
+    pledgeLimit: 25,
   },
   {
     id: 3,
@@ -57,6 +58,7 @@ const cardContent = [
       "You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
     limit: "Pledge $75 or more",
     quantities: 64,
+    pledgeLimit: 75,
   },
   {
     id: 4,
@@ -65,6 +67,8 @@ const cardContent = [
       "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
     limit: "Pledge $200 or more",
     quantities: 0,
+    pledgeLimit: 200,
+    opac: 0.2,
   },
 ];
 
@@ -77,45 +81,45 @@ export const CardDefault = () => (
       initial="hidden"
       className="card-list"
     >
-      {cardContent.map((card) => (
-        card.quantities !== 0 ? ( 
-        <motion.div key={card.id} variants={cardItemVariant}>
-          <DefaultCard
-            as={motion.div}
-            variants={cardItemVariant}
-            title={card.title}
-            description={card.description}
-            limit={card.limit}
-            quantities={card.quantities}
-            buttonText = "Select Reward"
-            bg= "hsl(176, 50%, 47%)"
-
-          ></DefaultCard>
-        </motion.div>
+      {cardContent.map((card) =>
+        card.quantities !== 0 ? (
+          <motion.div key={card.id} variants={cardItemVariant}>
+            <DefaultCard
+              as={motion.div}
+              variants={cardItemVariant}
+              title={card.title}
+              description={card.description}
+              pledgeLimit={card.pledgeLimit}
+              limit={card.limit}
+              quantities={card.quantities}
+              buttonText="Select Reward"
+              bg="hsl(176, 50%, 47%)"
+            ></DefaultCard>
+          </motion.div>
         ) : (
           <motion.div key={card.id} variants={cardItemVariant}>
-          <DefaultCard
-            as={motion.div}
-            variants={cardItemVariant}
-            title={card.title}
-            description={card.description}
-            limit={card.limit}
-            quantities={card.quantities}
-            buttonText = "Out of stock"
-            bg = "grey"
-            opacity = "0.5"
-          ></DefaultCard>
-        </motion.div>
+            <DefaultCard
+              as={motion.div}
+              variants={cardItemVariant}
+              title={card.title}
+              description={card.description}
+              opac= {card.opac}
+              limit={card.limit}
+              quantities={card.quantities}
+              buttonText="Out of stock"
+              bg="grey"
+            ></DefaultCard>
+          </motion.div>
         )
-      ))}
+      )}
     </motion.div>
   </StyledModal>
 );
 
-const Modal = ({dp}) => {
-  let {setDisplayFlex} = useContext(ModalContext)
+const Modal = ({ dp,bg }) => {
+  let { setDisplayFlex } = useContext(ModalContext);
   return (
-    <StyledModal dp = {dp}>
+    <StyledModal dp={dp} bg = {bg}>
       <div className="modal-header">
         <h2>Back this project</h2>
         <div className="image" onClick={() => setDisplayFlex("none")}>
@@ -133,16 +137,29 @@ const Modal = ({dp}) => {
         initial="hidden"
         className="card-list"
       >
-        {cardContent.map((card) => (
-          <div variants={cardItemVariant} key={card.id}>
-            <ModalCard
-              title={card.title}
-              description={card.description}
-              limit={card.limit}
-              quantities={card.quantities}
-            ></ModalCard>
-          </div>
-        ))}
+        {cardContent.map((card) => 
+          card.quantities === 0 ? (
+            <li className="cho-quan" variants={cardItemVariant} key={card.id}>
+              <ModalCard
+                title={card.title}
+                description={card.description}
+                limit={card.limit}
+                pledgeLimit={card.pledgeLimit}
+                quantities={card.quantities}
+              ></ModalCard>
+            </li>
+          ) : (
+            <div variants={cardItemVariant} key={card.id}>
+              <ModalCard
+                title={card.title}
+                description={card.description}
+                limit={card.limit}
+                pledgeLimit={card.pledgeLimit}
+                quantities={card.quantities}
+              ></ModalCard>
+            </div>
+          )
+        )}
       </motion.div>
     </StyledModal>
   );

@@ -20,7 +20,7 @@ export const DefaultCard = ({
   return (
     <>
       {title !== "Pledge with no reward" ? (
-        <StyledDefaultCard>
+        <StyledDefaultCard >
           <div className="title-container">
             <motion.h2 className="card-title">{title}</motion.h2>
             <div className="limit">{limit !== "" && <h2> {limit}</h2>}</div>
@@ -71,7 +71,8 @@ export const DefaultCard = ({
   );
 };
 
-export const ModalCard = ({ title, description, quantities, limit }) => {
+export const ModalCard = ({ title, description, quantities, limit,pledgeLimit,opac}) => {
+  console.log(opac);
   let [backerLeft,setBackerLeft] = useState(quantities);
   const {pledge,setPledge} = useContext(PledgeContext);
   let { dispatch } = useContext(ModalContext);
@@ -100,7 +101,7 @@ export const ModalCard = ({ title, description, quantities, limit }) => {
             borderRadius: "5px",
           }}
         >
-          <StyledModalCard style={{ borderRadius: "0", border: "none" }}>
+          <StyledModalCard style={{ borderRadius: "20", border: "none" }}>
             <button
               className="checkbox"
               onClick={() => {
@@ -131,9 +132,9 @@ export const ModalCard = ({ title, description, quantities, limit }) => {
               <div className="form-control">
                 <div className="input-container">
                   <h3 className="currency">
-                    $<strong style={{ color: "grey" }}>25</strong>
+                    $<strong style={{ color: "grey" }}>{pledgeLimit}</strong>
                   </h3>
-                  <input type="text" name="pledge-value" min="25" onChange={(e) => setInput(parseInt(e.target.value))}></input>
+                  <input type="number" name="pledge-value" min={pledgeLimit} onChange={(e) => setInput(parseInt(e.target.value))}></input>
                 </div>
                 <button onClick={toggleModal} className="submit" type="submit">
                   Continue

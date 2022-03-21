@@ -8,8 +8,9 @@ export const StyledModal = styled(motion.section)`
   border-radius: 5px;
   align-items: center;
   gap:2em;
-  background-color: #ffffff;
-
+  background-color: "#ffffff";
+  opacity: ${({opac}) => opac || 0.2};  
+   
 
   .modal-header {
       display: flex;
@@ -54,7 +55,10 @@ export const StyledModal = styled(motion.section)`
       flex-direction: column;
       gap:1em;
       width:100%;
+
   }
+
+  
 
   @media (max-width: 450px){
     width:max(100%,300px);
