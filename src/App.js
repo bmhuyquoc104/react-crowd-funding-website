@@ -11,9 +11,6 @@ import ModalSubmission from "./components/Modal/ModalSubmission/ModalSubmission"
 
 function App() {
   // AbsouteFlexContainer state
-  const defaultAmount = 89914;
-  const defaultBackers = 5007;
-  const defaultDaysLeft = 56;
   const [displayFlex, setDisplayFlex] = useState("none");
 
   const [pledge, setPledge] = useState({
@@ -68,6 +65,7 @@ function App() {
 
   return (
     <>
+      {/* Use context provider to wrap Modal children and pass the value */}
       <ModalContext.Provider
         value={{
           displayFlex,
@@ -76,6 +74,7 @@ function App() {
           dispatch,
         }}
       >
+        {/* Use pledge context to wrap its children and pass the parent values */}
         <PledgeContext.Provider value = {{pledge,
           setPledge}}>
           <StyledGlobal />
@@ -85,7 +84,9 @@ function App() {
             <PledgeProgressBar />
             <AboutUsSection />
           </FlexContainer>
+          {/* A stack div to display the chosen modal on top of the main container (use stack div to avoid opacity the modal) */}
           <AbsoluteFlexContainer dp={displayFlex}>
+            {/* Show the modal base on the trigger function */}
             <Modal dp={state.display}/>
             <ModalSubmission dp={state.displayModalSubmission} />
           </AbsoluteFlexContainer>

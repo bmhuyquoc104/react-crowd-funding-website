@@ -2,16 +2,20 @@ import React, {useContext} from "react";
 import { StyledPledgeProgressBar, StyledProgressBar } from "./PledgeProgressBar.styled";
 import { PledgeContext } from "../../hooks/useContext";
 
+// Build the progress bar by plain css
 const ProgressBar = ({ done }) => {
   return (
   <StyledProgressBar  className="progressbar-container">
-    <div className="progress-done" style={{ width:`${done}%`}}>
+    {/* Display the current progress by the props "done" */}
+    <div 
+    className="progress-done" style={{ width:`${done}%`}}>
         hello
     </div>
   </StyledProgressBar>
   );
 };
 
+// ProgressBar Container Section
 const PledgeProgressBar = () => {
   const {pledge} = useContext(PledgeContext);
   console.log(pledge.totalDaysLeft);
@@ -31,9 +35,10 @@ const PledgeProgressBar = () => {
           <h3>days left</h3>
         </div>
       </div>
+      {/* If the current amount pass the maximum required backer ->  */}
       {(pledge.totalAmount/100000)*100 <= 100 ? (
       <ProgressBar done = {(pledge.totalAmount/100000)*100}/>
-
+      
       ):(
         <ProgressBar done = "100"/>
 

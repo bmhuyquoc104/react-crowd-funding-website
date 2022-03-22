@@ -14,6 +14,7 @@ export const FlexContainer = styled.div`
   }
 `;
 
+
 export const AbsoluteFlexContainer = styled.div`
   display: ${({dp}) => dp};
   justify-content:center;

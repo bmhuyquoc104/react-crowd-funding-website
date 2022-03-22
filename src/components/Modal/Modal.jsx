@@ -5,6 +5,7 @@ import { ModalCard, DefaultCard } from "./ModalCard/ModalCard";
 import { motion } from "framer-motion";
 import { ModalContext } from "../../hooks/useContext";
 
+// Assign the animation for cardContainer
 const cardContainerVariant = {
   hidden: {
     opacity: 0,
@@ -24,6 +25,7 @@ const cardContainerVariant = {
   },
 };
 
+// Assign the animation for card item
 const cardItemVariant = {
   hidden: {
     opacity: 0,
@@ -33,6 +35,7 @@ const cardItemVariant = {
   },
 };
 
+// Assign the card content
 const cardContent = [
   {
     id: 1,
@@ -71,6 +74,7 @@ const cardContent = [
   },
 ];
 
+// The default card that shown when the user enter the page
 export const CardDefault = () => (
   <StyledModal>
     <motion.div
@@ -80,10 +84,13 @@ export const CardDefault = () => (
       initial="hidden"
       className="card-list"
     >
+      
       {cardContent.map((card) =>
+        // render by the condition
         card.quantities !== 0 ? (
           <motion.div key={card.id} variants={cardItemVariant}>
             <DefaultCard
+              // passing drops to default card for render
               as={motion.div}
               variants={cardItemVariant}
               title={card.title}
@@ -114,6 +121,7 @@ export const CardDefault = () => (
   </StyledModal>
 );
 
+// Render the card container after the user cho select card
 const Modal = ({ dp,bg }) => {
   let { setDisplayFlex } = useContext(ModalContext);
   return (
@@ -135,10 +143,13 @@ const Modal = ({ dp,bg }) => {
         initial="hidden"
         className="card-list"
       >
+        {/* Load cardContent to the modal card */}
         {cardContent.map((card) => 
+          // render if only the quantity of the card is 0 (out of stock)
           card.quantities === 0 ? (
             <div className ="outStock" variants={cardItemVariant} key={card.id}>
               <ModalCard
+                // passing props to the modal card for render 
                 title={card.title}
                 description={card.description}
                 limit={card.limit}

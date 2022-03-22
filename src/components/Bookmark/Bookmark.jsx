@@ -30,6 +30,7 @@ const Bookmark = () => {
         >
           Back this project
         </motion.button>
+        {/* Render depends on the toggle function */}
         {isToggle ? (
           <button
             className="button-container"

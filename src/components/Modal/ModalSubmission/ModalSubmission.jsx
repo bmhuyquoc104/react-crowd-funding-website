@@ -52,6 +52,7 @@ const ModalSubmission = ({dp}) => {
         Monitor Riser worldwide. You will get an email once our campaign is
         completed.
       </p>
+      {/* Use the useContext to ref the dispatch function to the onClick event */}
       <motion.button onClick = {() => dispatch({type:"CLOSEMODALSUBMISSION"})} whileHover = {{cursor: 'pointer',backgroundColor: 'hsl(176, 72%, 28%)'}}>Got it!</motion.button>
     </StyledModalSubmission>
   );

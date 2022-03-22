@@ -8,6 +8,7 @@ const Header = () => {
 
   return (
     <>
+    {/* Use Animate Presence to animate when the hamburger icon is clicked or not by the key */}
       <AnimatePresence initial={false} enterBeforeExit>
         {isShowBar ? (
           <StyledActiveHeader
@@ -43,7 +44,7 @@ const Header = () => {
           </StyledActiveHeader>
         ) : (
           <StyledHeader
-            key="1"
+            key="2"
             animate={{
               opacity: 1,
               transition: {

@@ -1,3 +1,5 @@
+// Configure the global styled
+
 import { createGlobalStyle } from "styled-components";
 
 export const StyledGlobal = createGlobalStyle`
